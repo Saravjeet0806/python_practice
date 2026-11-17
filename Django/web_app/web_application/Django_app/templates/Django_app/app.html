@@ -1,9 +1,53 @@
+
 {% extends "layout.html" %}
 
 {% block title %}
-  Django app title
+    Django App
 {% endblock %}
 
 {% block content %}
-  <h1>Django app homepage</h1>
+
+<div class="container mx-auto px-4 py-8">
+
+    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">
+        Django App Homepage
+    </h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        {% for chai in chais %}
+
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+
+            <img 
+                src="{{ chai.image.url }}" 
+                alt="{{ chai.name }}"
+                class="w-full h-56 object-cover"
+            >
+
+            <div class="p-5">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                    {{ chai.name }}
+                </h3>
+
+                <p class="text-gray-500 text-sm">
+                    Freshly prepared chai.
+                </p>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <p class="col-span-full text-center text-gray-500">
+            No chai available.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
 {% endblock %}
